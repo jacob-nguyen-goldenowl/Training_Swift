@@ -10,9 +10,25 @@
 		04E914AE290FB34C00A16B6F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E914AD290FB34C00A16B6F /* AppDelegate.swift */; };
 		04E914B0290FB34C00A16B6F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E914AF290FB34C00A16B6F /* SceneDelegate.swift */; };
 		04E914B2290FB34C00A16B6F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E914B1290FB34C00A16B6F /* ViewController.swift */; };
-		04E914B5290FB34C00A16B6F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04E914B3290FB34C00A16B6F /* Main.storyboard */; };
 		04E914B7290FB34E00A16B6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04E914B6290FB34E00A16B6F /* Assets.xcassets */; };
 		04E914BA290FB34E00A16B6F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04E914B8290FB34E00A16B6F /* LaunchScreen.storyboard */; };
+		04E914C3290FBDE700A16B6F /* LifeCycleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E914C2290FBDE700A16B6F /* LifeCycleViewController.swift */; };
+		04E914C5290FBDFB00A16B6F /* UIViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E914C4290FBDFB00A16B6F /* UIViewViewController.swift */; };
+		04E914C7290FBE1B00A16B6F /* Frame&BoundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E914C6290FBE1B00A16B6F /* Frame&BoundViewController.swift */; };
+		04E914C9290FBE4600A16B6F /* NSLayoutConstraintViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E914C8290FBE4600A16B6F /* NSLayoutConstraintViewController.swift */; };
+		04E914CB290FBE5E00A16B6F /* UIVCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E914CA290FBE5E00A16B6F /* UIVCViewController.swift */; };
+		04E914CD290FBE7100A16B6F /* UINaviViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E914CC290FBE7100A16B6F /* UINaviViewController.swift */; };
+		04E914CF290FD0C000A16B6F /* UILabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E914CE290FD0C000A16B6F /* UILabelViewController.swift */; };
+		04E914D1290FD0D000A16B6F /* ButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E914D0290FD0D000A16B6F /* ButtonViewController.swift */; };
+		04E914D3290FD0DE00A16B6F /* TextFiledViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E914D2290FD0DE00A16B6F /* TextFiledViewController.swift */; };
+		04E914D5290FD0EA00A16B6F /* TextViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E914D4290FD0EA00A16B6F /* TextViewViewController.swift */; };
+		04E914D7290FD0F500A16B6F /* TableViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E914D6290FD0F500A16B6F /* TableViewViewController.swift */; };
+		04E914D9290FD10000A16B6F /* CollectionViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E914D8290FD10000A16B6F /* CollectionViewViewController.swift */; };
+		04E914DB290FD10C00A16B6F /* ScrollViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E914DA290FD10C00A16B6F /* ScrollViewViewController.swift */; };
+		04E914DE290FD12200A16B6F /* StackViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E914DD290FD12200A16B6F /* StackViewViewController.swift */; };
+		04E914E0290FD12E00A16B6F /* TabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E914DF290FD12E00A16B6F /* TabbarViewController.swift */; };
+		04E914E2290FD13C00A16B6F /* NotificationCenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E914E1290FD13C00A16B6F /* NotificationCenterViewController.swift */; };
+		04E914F4290FD8D100A16B6F /* AnotherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E914F3290FD8D100A16B6F /* AnotherViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,10 +36,26 @@
 		04E914AD290FB34C00A16B6F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04E914AF290FB34C00A16B6F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		04E914B1290FB34C00A16B6F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		04E914B4290FB34C00A16B6F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		04E914B6290FB34E00A16B6F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04E914B9290FB34E00A16B6F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04E914BB290FB34E00A16B6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04E914C2290FBDE700A16B6F /* LifeCycleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeCycleViewController.swift; sourceTree = "<group>"; };
+		04E914C4290FBDFB00A16B6F /* UIViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewViewController.swift; sourceTree = "<group>"; };
+		04E914C6290FBE1B00A16B6F /* Frame&BoundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Frame&BoundViewController.swift"; sourceTree = "<group>"; };
+		04E914C8290FBE4600A16B6F /* NSLayoutConstraintViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraintViewController.swift; sourceTree = "<group>"; };
+		04E914CA290FBE5E00A16B6F /* UIVCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIVCViewController.swift; sourceTree = "<group>"; };
+		04E914CC290FBE7100A16B6F /* UINaviViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINaviViewController.swift; sourceTree = "<group>"; };
+		04E914CE290FD0C000A16B6F /* UILabelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelViewController.swift; sourceTree = "<group>"; };
+		04E914D0290FD0D000A16B6F /* ButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonViewController.swift; sourceTree = "<group>"; };
+		04E914D2290FD0DE00A16B6F /* TextFiledViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFiledViewController.swift; sourceTree = "<group>"; };
+		04E914D4290FD0EA00A16B6F /* TextViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewViewController.swift; sourceTree = "<group>"; };
+		04E914D6290FD0F500A16B6F /* TableViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewViewController.swift; sourceTree = "<group>"; };
+		04E914D8290FD10000A16B6F /* CollectionViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewViewController.swift; sourceTree = "<group>"; };
+		04E914DA290FD10C00A16B6F /* ScrollViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewViewController.swift; sourceTree = "<group>"; };
+		04E914DD290FD12200A16B6F /* StackViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewViewController.swift; sourceTree = "<group>"; };
+		04E914DF290FD12E00A16B6F /* TabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarViewController.swift; sourceTree = "<group>"; };
+		04E914E1290FD13C00A16B6F /* NotificationCenterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterViewController.swift; sourceTree = "<group>"; };
+		04E914F3290FD8D100A16B6F /* AnotherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnotherViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +88,167 @@
 		04E914AC290FB34C00A16B6F /* View&Layout */ = {
 			isa = PBXGroup;
 			children = (
+				04E914C1290FB69500A16B6F /* Controller */,
 				04E914AD290FB34C00A16B6F /* AppDelegate.swift */,
 				04E914AF290FB34C00A16B6F /* SceneDelegate.swift */,
 				04E914B1290FB34C00A16B6F /* ViewController.swift */,
-				04E914B3290FB34C00A16B6F /* Main.storyboard */,
 				04E914B6290FB34E00A16B6F /* Assets.xcassets */,
 				04E914B8290FB34E00A16B6F /* LaunchScreen.storyboard */,
 				04E914BB290FB34E00A16B6F /* Info.plist */,
 			);
 			path = "View&Layout";
+			sourceTree = "<group>";
+		};
+		04E914C1290FB69500A16B6F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				04E914F2290FD40C00A16B6F /* NotificationCenter */,
+				04E914F1290FD3FA00A16B6F /* Tabbar */,
+				04E914F0290FD3EB00A16B6F /* StackView */,
+				04E914EF290FD3E000A16B6F /* ScrollView */,
+				04E914EE290FD3D200A16B6F /* CollectionView */,
+				04E914ED290FD3BC00A16B6F /* TableView */,
+				04E914EC290FD3B000A16B6F /* TextView */,
+				04E914EB290FD3A600A16B6F /* TextField */,
+				04E914EA290FD39600A16B6F /* UIButton */,
+				04E914E9290FD38C00A16B6F /* UILabel */,
+				04E914E8290FD38000A16B6F /* UINavigation */,
+				04E914E7290FD37200A16B6F /* UIViewController */,
+				04E914E6290FD36500A16B6F /* NSConstraint */,
+				04E914E5290FD35700A16B6F /* Frame&Bound */,
+				04E914E4290FD34400A16B6F /* UIView */,
+				04E914E3290FD33800A16B6F /* Life cycle */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		04E914E3290FD33800A16B6F /* Life cycle */ = {
+			isa = PBXGroup;
+			children = (
+				04E914C2290FBDE700A16B6F /* LifeCycleViewController.swift */,
+				04E914F3290FD8D100A16B6F /* AnotherViewController.swift */,
+			);
+			path = "Life cycle";
+			sourceTree = "<group>";
+		};
+		04E914E4290FD34400A16B6F /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				04E914C4290FBDFB00A16B6F /* UIViewViewController.swift */,
+			);
+			path = UIView;
+			sourceTree = "<group>";
+		};
+		04E914E5290FD35700A16B6F /* Frame&Bound */ = {
+			isa = PBXGroup;
+			children = (
+				04E914C6290FBE1B00A16B6F /* Frame&BoundViewController.swift */,
+			);
+			path = "Frame&Bound";
+			sourceTree = "<group>";
+		};
+		04E914E6290FD36500A16B6F /* NSConstraint */ = {
+			isa = PBXGroup;
+			children = (
+				04E914C8290FBE4600A16B6F /* NSLayoutConstraintViewController.swift */,
+			);
+			path = NSConstraint;
+			sourceTree = "<group>";
+		};
+		04E914E7290FD37200A16B6F /* UIViewController */ = {
+			isa = PBXGroup;
+			children = (
+				04E914CA290FBE5E00A16B6F /* UIVCViewController.swift */,
+			);
+			path = UIViewController;
+			sourceTree = "<group>";
+		};
+		04E914E8290FD38000A16B6F /* UINavigation */ = {
+			isa = PBXGroup;
+			children = (
+				04E914CC290FBE7100A16B6F /* UINaviViewController.swift */,
+			);
+			path = UINavigation;
+			sourceTree = "<group>";
+		};
+		04E914E9290FD38C00A16B6F /* UILabel */ = {
+			isa = PBXGroup;
+			children = (
+				04E914CE290FD0C000A16B6F /* UILabelViewController.swift */,
+			);
+			path = UILabel;
+			sourceTree = "<group>";
+		};
+		04E914EA290FD39600A16B6F /* UIButton */ = {
+			isa = PBXGroup;
+			children = (
+				04E914D0290FD0D000A16B6F /* ButtonViewController.swift */,
+			);
+			path = UIButton;
+			sourceTree = "<group>";
+		};
+		04E914EB290FD3A600A16B6F /* TextField */ = {
+			isa = PBXGroup;
+			children = (
+				04E914D2290FD0DE00A16B6F /* TextFiledViewController.swift */,
+			);
+			path = TextField;
+			sourceTree = "<group>";
+		};
+		04E914EC290FD3B000A16B6F /* TextView */ = {
+			isa = PBXGroup;
+			children = (
+				04E914D4290FD0EA00A16B6F /* TextViewViewController.swift */,
+			);
+			path = TextView;
+			sourceTree = "<group>";
+		};
+		04E914ED290FD3BC00A16B6F /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				04E914D6290FD0F500A16B6F /* TableViewViewController.swift */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
+		04E914EE290FD3D200A16B6F /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				04E914D8290FD10000A16B6F /* CollectionViewViewController.swift */,
+			);
+			path = CollectionView;
+			sourceTree = "<group>";
+		};
+		04E914EF290FD3E000A16B6F /* ScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				04E914DA290FD10C00A16B6F /* ScrollViewViewController.swift */,
+			);
+			path = ScrollView;
+			sourceTree = "<group>";
+		};
+		04E914F0290FD3EB00A16B6F /* StackView */ = {
+			isa = PBXGroup;
+			children = (
+				04E914DD290FD12200A16B6F /* StackViewViewController.swift */,
+			);
+			path = StackView;
+			sourceTree = "<group>";
+		};
+		04E914F1290FD3FA00A16B6F /* Tabbar */ = {
+			isa = PBXGroup;
+			children = (
+				04E914DF290FD12E00A16B6F /* TabbarViewController.swift */,
+			);
+			path = Tabbar;
+			sourceTree = "<group>";
+		};
+		04E914F2290FD40C00A16B6F /* NotificationCenter */ = {
+			isa = PBXGroup;
+			children = (
+				04E914E1290FD13C00A16B6F /* NotificationCenterViewController.swift */,
+			);
+			path = NotificationCenter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,7 +311,6 @@
 			files = (
 				04E914BA290FB34E00A16B6F /* LaunchScreen.storyboard in Resources */,
 				04E914B7290FB34E00A16B6F /* Assets.xcassets in Resources */,
-				04E914B5290FB34C00A16B6F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,22 +322,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				04E914B2290FB34C00A16B6F /* ViewController.swift in Sources */,
+				04E914CB290FBE5E00A16B6F /* UIVCViewController.swift in Sources */,
+				04E914DB290FD10C00A16B6F /* ScrollViewViewController.swift in Sources */,
+				04E914D9290FD10000A16B6F /* CollectionViewViewController.swift in Sources */,
 				04E914AE290FB34C00A16B6F /* AppDelegate.swift in Sources */,
+				04E914CF290FD0C000A16B6F /* UILabelViewController.swift in Sources */,
+				04E914F4290FD8D100A16B6F /* AnotherViewController.swift in Sources */,
+				04E914C9290FBE4600A16B6F /* NSLayoutConstraintViewController.swift in Sources */,
+				04E914C5290FBDFB00A16B6F /* UIViewViewController.swift in Sources */,
+				04E914E0290FD12E00A16B6F /* TabbarViewController.swift in Sources */,
+				04E914E2290FD13C00A16B6F /* NotificationCenterViewController.swift in Sources */,
+				04E914D7290FD0F500A16B6F /* TableViewViewController.swift in Sources */,
 				04E914B0290FB34C00A16B6F /* SceneDelegate.swift in Sources */,
+				04E914CD290FBE7100A16B6F /* UINaviViewController.swift in Sources */,
+				04E914D5290FD0EA00A16B6F /* TextViewViewController.swift in Sources */,
+				04E914D3290FD0DE00A16B6F /* TextFiledViewController.swift in Sources */,
+				04E914C7290FBE1B00A16B6F /* Frame&BoundViewController.swift in Sources */,
+				04E914DE290FD12200A16B6F /* StackViewViewController.swift in Sources */,
+				04E914C3290FBDE700A16B6F /* LifeCycleViewController.swift in Sources */,
+				04E914D1290FD0D000A16B6F /* ButtonViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		04E914B3290FB34C00A16B6F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				04E914B4290FB34C00A16B6F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		04E914B8290FB34E00A16B6F /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -292,7 +484,7 @@
 				INFOPLIST_FILE = "View&Layout/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -320,7 +512,7 @@
 				INFOPLIST_FILE = "View&Layout/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
