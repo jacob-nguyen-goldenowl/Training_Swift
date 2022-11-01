@@ -5,6 +5,22 @@
 //  Created by Nguyễn Hữu Toàn on 31/10/2022.
 //
 
+/*
+ 
+ LEARN 
+ - Life cycle of view controller
+ 
+    + Load view: The function will be called first when initializing a view controller.
+    + viewDidLoad: When the view controller have been loaded into memory ( View controller does not alrealy exist in memory), just called only in the life of that view.
+    + viewWillAppear: Will be called before a view is added to the view system and before the animation renders a view.
+    + viewDidAppear: Will be called when a view has been added to the view system and displayed on the screen.
+    + viewWillDisAppear: Called when a view has been hidden from the screen and animation when the view is hidden.
+    + viewDidDisAppear: Call when a view is hidden from the screen.
+ - Warning from system
+    + viewDidUnload: When app receives a warning from system about low memory status, this function will release unnecessary properties, assign nil them. 
+ 
+ */
+
 import UIKit
 
 class LifeCycleViewController: UIViewController {
@@ -19,10 +35,15 @@ class LifeCycleViewController: UIViewController {
         button.addTarget(self, action: #selector(didTapChangeViewController), for: .touchUpInside)
         return button
     }()
+    
+    override func loadView() {
+        super.loadView()
+        print("Load view")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("load view is running...")
+        print("Did load view is running...")
         view.backgroundColor = .systemBackground
         view.addSubview(lifeCycleButton)
     }
@@ -51,7 +72,7 @@ class LifeCycleViewController: UIViewController {
         super.viewDidLayoutSubviews()
         configureConstraintButton()
     }
-    
+
     private func configureConstraintButton() {
         NSLayoutConstraint.activate([
             lifeCycleButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
