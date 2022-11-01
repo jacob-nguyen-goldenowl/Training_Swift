@@ -7,8 +7,8 @@
 
 /*
  LEARN 
-    - A view that allows the scrolling and zooming of its contained views.
-
+ - A view that allows the scrolling and zooming of its contained views.
+ 
  */
 
 import UIKit
@@ -17,7 +17,7 @@ class ScrollViewViewController: UIViewController {
     
     private var scrollView = UIScrollView()
     private var imageView = UIImageView()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -44,7 +44,7 @@ class ScrollViewViewController: UIViewController {
         updateMinZoomScale(view.bounds.size)
         
     }
-
+    
 }
 
 extension ScrollViewViewController: UIScrollViewDelegate {
