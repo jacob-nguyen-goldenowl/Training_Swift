@@ -107,9 +107,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
                 vc.title = nameIndex
                 navigationController?.pushViewController(vc, animated: true)
             case 14:
-                let vc = TableViewViewController()
+                let vc = UINavigationController(rootViewController: TabbarViewController())
                 vc.title = nameIndex
-                navigationController?.pushViewController(vc, animated: true)
+                present(vc, animated: true)
+                
             case 15:
                 let vc = NotificationCenterViewController()
                 vc.title = nameIndex
