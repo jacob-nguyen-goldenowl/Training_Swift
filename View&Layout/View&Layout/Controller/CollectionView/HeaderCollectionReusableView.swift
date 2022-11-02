@@ -1,15 +1,15 @@
 //
-//  HeaderReusableView.swift
+//  HeaderCollectionReusableView.swift
 //  View&Layout
 //
-//  Created by Nguyễn Hữu Toàn on 01/11/2022.
+//  Created by Nguyễn Hữu Toàn on 02/11/2022.
 //
 
 import UIKit
 
-class HeaderReusableView: UICollectionReusableView {
-    
-    static let identifier = "HeaderReusableView"
+class HeaderCollectionReusableView: UICollectionReusableView {
+        
+    static let identifier = "HeaderCollectionReusableView"
     
     lazy var lb: UILabel = {
         let label = UILabel()
@@ -34,5 +34,6 @@ class HeaderReusableView: UICollectionReusableView {
     public func configure(name: String) {
         lb.text = name
     }
+    
     
 }
