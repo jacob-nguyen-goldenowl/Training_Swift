@@ -8,7 +8,7 @@
 import UIKit
 
 class HeaderCollectionReusableView: UICollectionReusableView {
-        
+    
     static let identifier = "HeaderCollectionReusableView"
     
     lazy var lb: UILabel = {
@@ -34,6 +34,5 @@ class HeaderCollectionReusableView: UICollectionReusableView {
     public func configure(name: String) {
         lb.text = name
     }
-    
     
 }
