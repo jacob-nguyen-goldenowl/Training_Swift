@@ -11,6 +11,7 @@
 		045CA90F291279DE00565BE5 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CA90E291279DE00565BE5 /* SecondViewController.swift */; };
 		045CA911291279EC00565BE5 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CA910291279EC00565BE5 /* ThirdViewController.swift */; };
 		045CA91329127A1600565BE5 /* HeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CA91229127A1600565BE5 /* HeaderCollectionReusableView.swift */; };
+		045CA91529127D6100565BE5 /* OtherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CA91429127D6100565BE5 /* OtherViewController.swift */; };
 		04E914AE290FB34C00A16B6F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E914AD290FB34C00A16B6F /* AppDelegate.swift */; };
 		04E914B0290FB34C00A16B6F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E914AF290FB34C00A16B6F /* SceneDelegate.swift */; };
 		04E914B2290FB34C00A16B6F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E914B1290FB34C00A16B6F /* ViewController.swift */; };
@@ -40,6 +41,7 @@
 		045CA90E291279DE00565BE5 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		045CA910291279EC00565BE5 /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		045CA91229127A1600565BE5 /* HeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionReusableView.swift; sourceTree = "<group>"; };
+		045CA91429127D6100565BE5 /* OtherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherViewController.swift; sourceTree = "<group>"; };
 		04E914AA290FB34C00A16B6F /* View&Layout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "View&Layout.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		04E914AD290FB34C00A16B6F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04E914AF290FB34C00A16B6F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 			isa = PBXGroup;
 			children = (
 				04E914E1290FD13C00A16B6F /* NotificationCenterViewController.swift */,
+				045CA91429127D6100565BE5 /* OtherViewController.swift */,
 			);
 			path = NotificationCenter;
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 				04E914E2290FD13C00A16B6F /* NotificationCenterViewController.swift in Sources */,
 				04E914D7290FD0F500A16B6F /* TableViewViewController.swift in Sources */,
 				04E914B0290FB34C00A16B6F /* SceneDelegate.swift in Sources */,
+				045CA91529127D6100565BE5 /* OtherViewController.swift in Sources */,
 				04E914CD290FBE7100A16B6F /* UINaviViewController.swift in Sources */,
 				04E914D5290FD0EA00A16B6F /* TextViewViewController.swift in Sources */,
 				045CA91329127A1600565BE5 /* HeaderCollectionReusableView.swift in Sources */,
