@@ -36,7 +36,7 @@ class NotificationCenterViewController: UIViewController {
         NotifyButton.frame = CGRect(x: 30, y: view.safeAreaInsets.top + 200, width: view.frame.size.width - 60, height: 50)
         
         NaviButton.frame = CGRect(x: 30, y: NotifyButton.frame.size.height + 500, width: view.frame.size.width - 60, height: 50)
-
+        
     }
     
     @objc func didTapedObseverChangeColor(_ sender: Any) {
