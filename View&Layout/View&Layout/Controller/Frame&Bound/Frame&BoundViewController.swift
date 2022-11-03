@@ -15,44 +15,239 @@ import UIKit
 
 class Frame_BoundViewController: UIViewController {
     
-    lazy var redView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .red
-        return view
+    lazy var mainView: UIView = {
+        let vw = UIView()
+        vw.translatesAutoresizingMaskIntoConstraints = false
+        vw.layer.borderWidth = 1
+        return vw
     }()
     
-    lazy var imageView: UIImageView = {
-        let image = UIImageView()
-        image.layer.borderWidth = 2
-        image.layer.borderColor = UIColor.red.cgColor
-        image.image = UIImage(named: "image")
-        return image
+    lazy var controlView: UIView = {
+        let vw = UIView()
+        vw.layer.borderWidth = 1
+        return vw
     }()
     
-    lazy var blueView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .blue
-        return view
+    private var cyanView: UIView = {
+        let vw = UIView()
+        vw.backgroundColor = .systemCyan
+        return vw
+    }()
+        
+    // MARK: - Slider control
+    
+    private var frameXSider: UISlider = {
+        let slider = UISlider()
+        slider.addTarget(self, action: #selector(didTapChangeFrameX(_:)), for: .valueChanged)
+        slider.minimumValue = 0
+        slider.maximumValue = 200
+        return slider
+    }()
+    
+    private var frameYSider: UISlider = {
+        let slider = UISlider()
+        slider.addTarget(self, action: #selector(didTapChangeFrameY(_:)), for: .valueChanged)
+        slider.minimumValue = 0
+        slider.maximumValue = 200
+        return slider
+    }()
+    
+    private var frameWidthSider: UISlider = {
+        let slider = UISlider()
+        slider.addTarget(self, action: #selector(didTapChangeFrameWidth(_:)), for: .valueChanged)
+        slider.minimumValue = 0
+        slider.maximumValue = 200
+        return slider
+    }()
+    
+    private var frameHeightSider: UISlider = {
+        let slider = UISlider()
+        slider.addTarget(self, action: #selector(didTapChangeFrameHeight(_:)), for: .valueChanged)
+        slider.minimumValue = 0
+        slider.maximumValue = 200
+        return slider
+    }()
+    
+    private var rotationSlider: UISlider = {
+        let slider = UISlider()
+        slider.addTarget(self, action: #selector(didTapChangeRotation(_:)), for: .valueChanged)
+        slider.minimumValue = 0.0
+        slider.maximumValue = 1.0
+        return slider
+    }()
+    
+    // MARK: - Label view
+    
+    private var frameXLabel: UILabel = {
+        let lbl = UILabel()
+        lbl.text = "Frame X = 0"
+        return lbl
+    }()
+    
+    private var frameYLabel: UILabel = {
+        let lbl = UILabel()
+        lbl.text = "Frame Y = 0"
+        return lbl
+    }()
+    
+    private var frameWidthLabel: UILabel = {
+        let lbl = UILabel()
+        lbl.text = "Frame width = 50"
+        return lbl
+    }()
+    
+    private var frameHeightLabel: UILabel = {
+        let lbl = UILabel()
+        lbl.text = "Frame height = 50"
+        return lbl
+    }()
+    
+    private var rotationLabel: UILabel = {
+        let lbl = UILabel()
+        lbl.text = "Rotation = 0"
+        return lbl
+    }()
+    
+    // MARK: - StackView
+    private var verStackView = UIStackView()
+    private var frameXStackView = UIStackView()
+    private var frameYStackView = UIStackView()
+    private var frameWidthStackView = UIStackView()
+    private var frameHeightStackView = UIStackView()
+    private var rotationStackView = UIStackView()
+
+    
+    // MARK: - UIView
+    lazy var frameXView: UIView = {
+        let vw = UIView()
+        return vw
+    }()
+    
+    lazy var frameYView: UIView = {
+        let vw = UIView()
+        return vw
+    }()
+    
+    lazy var frameWidthView: UIView = {
+        let vw = UIView()
+        return vw
+    }()
+    
+    lazy var frameHeightView: UIView = {
+        let vw = UIView()
+        return vw
+    }()
+    
+    lazy var rotationView: UIView = {
+        let vw = UIView()
+        return vw
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        
-        view.addSubview(redView)
-        view.addSubview(blueView)
-        view.addSubview(imageView)
-        
-            // Using frame
-        redView.frame = CGRect(x: 50, y: view.safeAreaInsets.top + 100, width: 100, height: 100)
-        
-            // Using bound
-        blueView.bounds = CGRect(x: 50, y: view.safeAreaInsets.top + 100, width: 100, height: 100)
-        
-        imageView.frame = CGRect(x: 50, y: view.safeAreaInsets.top + blueView.frame.size.height + 200, width: 300, height: 300)
-        imageView.bounds = CGRect(x: 10, y: 10, width: 100, height: 100)
-        imageView.transform = CGAffineTransform(rotationAngle: 10)
+        setUpUI()
+        setUpConstrainttView()
     }
     
+    private func setUpUI() {
+        view.addSubview(mainView)
+        view.addSubview(controlView)
+        mainView.addSubview(cyanView)
+        cyanView.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+    }
     
+    private func setUpConstrainttView() {  
+        
+        mainView.anchor(top: view.safeAreaLayoutGuide.topAnchor,leading: view.leadingAnchor, trailing: view.trailingAnchor, paddingTop: 10, paddingLeft: 10, paddingRight: 10)
+        mainView.heightAnchor.constraint(equalToConstant: 400).isActive = true
+
+        controlView.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, paddingBottom: 10, paddingLeft: 10, paddingRight: 10)
+        
+        NSLayoutConstraint(item: mainView, attribute: .bottom, relatedBy: .equal, toItem: controlView, attribute: .top, multiplier: 1, constant: -20).isActive = true
+        
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        controlView.addSubview(verStackView)
+        setUpControlStackView()  
+        configFrame()
+        
+    }
+    
+    private func setUpControlStackView() {
+        
+        configConstraintControlStackView()
+        verStackView.axis = .vertical
+        verStackView.distribution = .fillEqually
+        verStackView.spacing = 20
+        [frameXView, frameYView, frameWidthView, frameHeightView, rotationView].forEach {
+            verStackView.addArrangedSubview($0)
+        }
+        
+    }
+    
+    private func configConstraintControlStackView() {
+        verStackView.anchor(top: controlView.topAnchor, bottom: controlView.bottomAnchor ,leading: controlView.leadingAnchor, trailing: controlView.trailingAnchor,paddingTop: 10,paddingBottom: 10, paddingLeft: 10, paddingRight: 10)
+    }
+    
+    private func configFrame() {
+
+        configureStackHorizontal(view: frameXView, stack: frameXStackView, slider: frameXSider, label: frameXLabel)
+        configureStackHorizontal(view: frameYView, stack: frameYStackView, slider: frameYSider, label: frameYLabel)
+        configureStackHorizontal(view: frameWidthView, stack: frameWidthStackView, slider: frameWidthSider, label: frameWidthLabel)
+        configureStackHorizontal(view: frameHeightView, stack: frameHeightStackView, slider: frameHeightSider, label: frameHeightLabel)
+        configureStackHorizontal(view: rotationView, stack: rotationStackView, slider: rotationSlider, label: rotationLabel)
+        
+    }
+    
+    private func configureStackHorizontal(view: UIView ,stack: UIStackView, slider: UISlider, label: UILabel) {
+        
+        view.addSubview(stack)
+        stack.axis = .horizontal
+        stack.distribution = .fillEqually
+        stack.spacing = 20
+        stack.addArrangedSubview(slider)
+        stack.addArrangedSubview(label)
+        stack.anchor(top: view.topAnchor, bottom: view.bottomAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor)
+        
+    }
+    
+    private func updateTextLabel() {
+        frameXLabel.text = "Frame X = \(Int(cyanView.frame.origin.x))"
+        frameYLabel.text = "Frame Y = \(Int(cyanView.frame.origin.y))"
+        frameWidthLabel.text = "Frame width = \(Int(cyanView.frame.size.width))"
+        frameHeightLabel.text = "Frame height = \(Int(cyanView.frame.size.height))"
+        rotationLabel.text = "Rotation = \(Float(rotationSlider.value))"
+    }
+
+}
+
+extension Frame_BoundViewController {
+    
+    @objc func didTapChangeFrameX(_ slider: UISlider) {
+        cyanView.frame.origin.x = CGFloat(slider.value)
+        updateTextLabel()
+    }
+    
+    @objc func didTapChangeFrameY(_ slider: UISlider) {
+        cyanView.frame.origin.y = CGFloat(slider.value)
+        updateTextLabel()
+    }
+    
+    @objc func didTapChangeFrameWidth(_ slider: UISlider) {
+        cyanView.frame.size.width = CGFloat(slider.value)
+        updateTextLabel()
+    }
+    
+    @objc func didTapChangeFrameHeight(_ slider: UISlider) {
+        cyanView.frame.size.height = CGFloat(slider.value)
+        updateTextLabel()
+    }
+    
+    @objc func didTapChangeRotation(_ slider: UISlider) {
+        cyanView.transform = mainView.transform.rotated(by: CGFloat(slider.value))
+        updateTextLabel()
+    }
 }
