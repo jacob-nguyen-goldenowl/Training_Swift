@@ -28,103 +28,158 @@ import UIKit
 
 class UIViewViewController: UIViewController {
     
-    lazy var redView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .systemRed
-        view.layer.borderWidth = 1
-        view.layer.borderColor = CGColor.init(red: 153/255, green: 39/255, blue: 219/255, alpha: 1.0) // Violet
-        view.layer.cornerRadius = 10
-        return view
+    lazy var imgView: UIImageView = {
+        let img = UIImageView()
+        img.image = UIImage(named: "image2")
+        img.translatesAutoresizingMaskIntoConstraints = false
+        img.layer.masksToBounds = true
+        img.contentMode = .scaleAspectFill
+        img.layer.cornerRadius = 20
+        img.isUserInteractionEnabled = true
+        img.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:))))
+        return img
     }()
     
-    lazy var blueView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .systemBlue
-        view.layer.borderWidth = 1
-        return view
+    lazy var cardView: UIView = {
+        let vw = UIView()
+        vw.translatesAutoresizingMaskIntoConstraints = false
+        vw.backgroundColor = UIColor.systemYellow.withAlphaComponent(0.5)
+        vw.isUserInteractionEnabled = false
+        return vw
     }()
     
-    lazy var yellowView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .systemYellow
-        view.layer.borderWidth = 1
-        return view
+    lazy var triangleView: UIView = {
+        let vw = UIView()
+        vw.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handlePanGestureTriangle(_:))))
+        return vw
     }()
     
-    lazy var gestureView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .systemTeal
-        view.layer.cornerRadius = 20
-        return view
+    lazy var pentagonView: UIView = {
+        let vw = UIView()
+        vw.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handlePanGesturePentagon(_:))))
+        return vw
     }()
     
-    lazy var labelGestureView: UILabel = {
-        let label = UILabel()
-        label.text = "Change color"
-        label.textColor = .white
-        label.textAlignment = .center
-        let font = UIFont(name: "GillSans-Italic", size: 20)!
-        label.font = font
-        return label
-    }()
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
-        
-        view.addSubview(redView)
-        view.addSubview(blueView)
-        view.addSubview(yellowView)
-        view.addSubview(gestureView)
-        
-        drawLine(start: CGPoint(x: 10, y: 250), end: CGPoint(x: 300, y: 350))
-        
-        // 1. create a gesture recognizer (tap gesture)
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
-        
-        // 2. add the gesture recognizer to a view
-        gestureView.addGestureRecognizer(tapGesture)
-        
-        // Add label in view
-        gestureView.addSubview(labelGestureView)
-        
+        view.backgroundColor = UIColor.systemBackground
+        setUpUI()
+        createTriangle()
     }
     
-    // 3. this method is called when a tap is recognized
-    @objc func handleTap(sender: UITapGestureRecognizer) {
-        gestureView.backgroundColor = .systemPink
+    private func setUpUI() {
+        view.addSubview(imgView)
+        NSLayoutConstraint.activate([
+            imgView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            imgView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            imgView.widthAnchor.constraint(equalToConstant: 200),
+            imgView.heightAnchor.constraint(equalToConstant: 250)
+        ])
     }
-
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
-        // layout of red view
-        redView.frame = CGRect(x: 10, y: view.safeAreaInsets.top + 30, width: 100, height: 100)
-        blueView.frame = CGRect(x: redView.frame.size.width + 20, y: redView.frame.origin.y , width: 100, height: 100)
-        yellowView.frame = CGRect(x: redView.frame.size.width + blueView.frame.size.width + 30, y: blueView.frame.origin.y , width: 100, height: 100)
-        yellowView.layer.cornerRadius = yellowView.frame.size.width/2
-        
-        gestureView.frame = CGRect(x: 30, y: 400, width: view.frame.size.width - 60, height: 50)
-        
-        labelGestureView.frame = gestureView.bounds
+        setUpCardView()
+    }
+
+    private func setUpCardView() {
+        imgView.addSubview(cardView)
+        NSLayoutConstraint.activate([
+            cardView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            cardView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            cardView.widthAnchor.constraint(equalToConstant: 200),
+            cardView.heightAnchor.constraint(equalToConstant: 250)
+        ])
     }
     
-    func drawLine(start: CGPoint, end: CGPoint) {
+    private func createTriangle() {
+        triangleView.frame =  CGRect(x: 0, y: 0, width: view.frame.width, height: 300)
+        view.addSubview(triangleView)
         
-        // create PART
-        let path = UIBezierPath()
-        path.move(to: start)
-        path.addLine(to: end)
-        path.close()
+        pentagonView.frame = CGRect(x: 0, y: view.frame.size.height / 1.5, width: view.frame.size.width, height: 300)
+        view.addSubview(pentagonView)
         
-        // create LAYER
+        makeLayer(vw: triangleView,path: trianglePath())
+        makeLayer(vw: pentagonView,path: pentagonPath())
+    }
+    
+    private func makeLayer(vw: UIView, path: UIBezierPath) {
         let layer = CAShapeLayer()
-        layer.strokeColor = UIColor.purple.cgColor
-        layer.lineWidth = 10
-        layer.path = path.cgPath
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.strokeColor = UIColor.blue.cgColor
+        shapeLayer.lineWidth = 1.0
+        shapeLayer.path = path.cgPath
+        vw.layer.addSublayer(shapeLayer)
         
-        view.layer.addSublayer(layer)
+    }
+    
+    func trianglePath() -> UIBezierPath {
+        let path = UIBezierPath() 
+        path.move(to: CGPoint(x: view.frame.size.width/2, y: 100))
+        path.addLine(to: CGPoint(x: 100, y: 200))
+        path.addLine(to: CGPoint(x: view.frame.size.width - 100, y: 200))
+        path.close()
+        return path
+    }
+    
+    func pentagonPath() -> UIBezierPath {
+        let path = UIBezierPath()
+            // Set the starting point of the shape.
+        path.move(to: CGPoint(x: 100, y: 70))
+        path.addLine(to: CGPoint(x: 200, y: 110))
+        path.addLine(to: CGPoint(x: 160, y: 210))
+        path.addLine(to: CGPoint(x: 40, y: 210))
+        path.addLine(to: CGPoint(x: 0, y: 110))
+        path.close()
+        return path
     }
 }
 
+extension UIViewViewController {
+    
+    @objc func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
+        
+        if gesture.state == .began {
+                // code here ...
+        } else if gesture.state == .changed {
+            let translation = gesture.translation(in: self.view)
+            imgView.transform = CGAffineTransform(translationX: translation.x, y: translation.y)
+        } else if gesture.state == .ended {
+            UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 1, options: .curveEaseIn, animations: {
+                self.imgView.transform = .identity
+            })
+        }
 
+    }
+    
+    @objc func handlePanGestureTriangle(_ gesture: UIPanGestureRecognizer) {
+        
+        if gesture.state == .began {
+                // code here ...
+        } else if gesture.state == .changed {
+            let translation = gesture.translation(in: self.view)
+            triangleView.transform = CGAffineTransform(translationX: translation.x, y: translation.y)
+        } else if gesture.state == .ended {
+            UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 1, options: .curveEaseIn, animations: {
+                self.triangleView.transform = .identity
+            })
+        }
+        
+    }
+    
+    
+    @objc func handlePanGesturePentagon(_ gesture: UIPanGestureRecognizer) {
+        
+        if gesture.state == .began {
+                // code here ...
+        } else if gesture.state == .changed {
+            let translation = gesture.translation(in: self.view)
+            pentagonView.transform = CGAffineTransform(translationX: translation.x, y: translation.y)
+        } else if gesture.state == .ended {
+            UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 1, options: .curveEaseIn, animations: {
+                self.pentagonView.transform = .identity
+            })
+        }
+        
+    }
+}
