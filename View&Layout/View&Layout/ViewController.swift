@@ -20,16 +20,43 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        
+        setUpTableView()
+//        configureNavigationBar()
+    }
+    
+    private func setUpTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-        
+        tableView.frame = view.bounds
         view.addSubview(tableView)
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        tableView.frame = view.bounds
+    override func viewWillAppear(_ animated: Bool) {
+        configureNavigationBar()
+    }
+        
+    private func configureNavigationBar() {
+                        
+        let searchItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(tap))
+        let bookMarkItem = UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(tap))
+        
+        let settingItem = UIBarButtonItem(image: UIImage(systemName: "mic.fill") , style: .plain, target: self, action: #selector(tap))
+        
+        navigationItem.rightBarButtonItems = [searchItem, bookMarkItem]
+        navigationItem.leftBarButtonItem = settingItem
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
+
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = .purple.withAlphaComponent(0.6)
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.green]
+        
+        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.compactAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        
     }
 }
 
@@ -91,6 +118,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
                 vc.title = nameIndex
                 navigationController?.pushViewController(vc, animated: true)
             case 10:
+//                let vc = UINavigationController(rootViewController: TableViewViewController())
+//                vc.modalPresentationStyle = .fullScreen
+//                present(vc, animated: true)
                 let vc = TableViewViewController()
                 vc.title = nameIndex
                 navigationController?.pushViewController(vc, animated: true)
@@ -118,6 +148,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             default:
                 print("nil view")
         }
+    }
+    
+    @objc func tap() {
+        
     }
 }
 
