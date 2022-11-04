@@ -45,6 +45,11 @@ class ScrollViewViewController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationItem.largeTitleDisplayMode = .never
+        navigationController?.navigationBar.prefersLargeTitles = false
+    }
+    
 }
 
 extension ScrollViewViewController: UIScrollViewDelegate {

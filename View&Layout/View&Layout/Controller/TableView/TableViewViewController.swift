@@ -29,55 +29,96 @@ import UIKit
 
 class TableViewViewController: UIViewController {
     
-    var data = ["A", "B", "C", "D", "E", "F", "G", "H"]
+    let sectionTitle: [String] = ["First","Second", "Third", "Four", "Five"]
     
-    private var tableView: UITableView = {
-        let table = UITableView()
-        table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+    lazy var tableView: UITableView = {
+        let table = UITableView(frame: .zero, style: .grouped)
         return table
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        
+        setUpTableView()
+        createHeaderView()
+        configureNavigationBar()
+    }
+    
+    private func setUpTableView() {
         view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
-        
-        tableView.frame = view.bounds
+        tableView.register(CollectionTableViewCell.self, forCellReuseIdentifier: CollectionTableViewCell.identifier)
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = .systemBackground
+        tableView.anchor(top: view.topAnchor,
+                         bottom: view.bottomAnchor,
+                         leading: view.leadingAnchor,
+                         trailing: view.trailingAnchor)
+        tableView.showsVerticalScrollIndicator = false
+
     }
     
+    private func createHeaderView() {
+        let headerView = HeaderUIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 450))
+        headerView.backgroundColor = .systemRed
+        headerView.headerImageView.image = UIImage(named: "headerImage")
+        tableView.tableHeaderView = headerView
+    }
+    
+    private func configureNavigationBar() {
+        
+        let navBar = navigationController?.navigationBar
+        let navItem = navigationController?.navigationItem
+        navBar?.prefersLargeTitles = false
+                
+        navItem?.largeTitleDisplayMode = .never
+        
+    }
+
 }
 
 extension TableViewViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
-    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Hello"
+        return sectionTitle.count
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 100
+        return 40
     }
-        
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sectionTitle[section]
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        let index = data[indexPath.row]
-        cell.textLabel?.text = index
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CollectionTableViewCell.identifier, for: indexPath) as? CollectionTableViewCell else {
+            fatalError("Some error")
+        }
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        print("Press with row index \(indexPath.row)")
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        guard let header = view as? UITableViewHeaderFooterView else {return}
+        header.textLabel?.font = .systemFont(ofSize: 20, weight: .semibold)
+        header.textLabel?.frame = CGRect(x: header.bounds.origin.x + 20, y: header.bounds.origin.y, width: 100, height: header.bounds.height)
+        header.textLabel?.textColor = .red
+        header.textLabel?.text = header.textLabel?.text?.capitalizeFirstLetter()
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 200
+    }
+    
+}
+
+extension String {
+    func capitalizeFirstLetter() -> String {
+        return self.prefix(1).uppercased() + self.lowercased().dropFirst()
+    }
 }

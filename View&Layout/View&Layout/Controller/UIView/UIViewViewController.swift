@@ -64,7 +64,7 @@ class UIViewViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.systemBackground
         setUpUI()
-        createTriangle()
+        createView()
     }
     
     private func setUpUI() {
@@ -92,7 +92,7 @@ class UIViewViewController: UIViewController {
         ])
     }
     
-    private func createTriangle() {
+    private func createView() {
         triangleView.frame =  CGRect(x: 0, y: 0, width: view.frame.width, height: 300)
         view.addSubview(triangleView)
         
@@ -104,7 +104,6 @@ class UIViewViewController: UIViewController {
     }
     
     private func makeLayer(vw: UIView, path: UIBezierPath) {
-        let layer = CAShapeLayer()
         let shapeLayer = CAShapeLayer()
         shapeLayer.strokeColor = UIColor.blue.cgColor
         shapeLayer.lineWidth = 1.0
