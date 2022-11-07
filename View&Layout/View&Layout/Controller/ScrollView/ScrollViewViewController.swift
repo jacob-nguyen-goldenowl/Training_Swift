@@ -16,33 +16,18 @@ import UIKit
 class ScrollViewViewController: UIViewController {
     
     private var scrollView = UIScrollView()
-    private var imageView = UIImageView()
     
+    private var imageView: UIImageView = {
+        let img = UIImageView()
+        img.image = UIImage(named: "headerImage")
+        img.translatesAutoresizingMaskIntoConstraints = false
+        return img
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        
-        scrollView = UIScrollView(frame: CGRect(x: 10, y: view.safeAreaInsets.top + 100, width: view.frame.size.width - 20, height: view.frame.size.height - 120))
-        scrollView.backgroundColor = .systemCyan
-        view.addSubview(scrollView)
-        scrollView.contentSize = CGSize(width: 1000, height: 2300)
-        
-        imageView = UIImageView(frame: CGRect(x: 10, y: 10, width: scrollView.frame.size.width - 20, height: 300))
-        imageView.image = UIImage(named: "image")
-        
-        
-        let firstButton = UIButton(frame: CGRect(x: 50, y: 1000, width: 300, height: 100))
-        firstButton.backgroundColor = .systemPink
-        
-        let secondButton = UIButton(frame: CGRect(x: 50, y: 2000, width: 300, height: 100))
-        secondButton.backgroundColor = .systemRed
-        
-        scrollView.addSubview(imageView)
-        scrollView.addSubview(firstButton)
-        scrollView.addSubview(secondButton)
-        
-        updateMinZoomScale(view.bounds.size)
-        
+        setupScrollView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,6 +35,17 @@ class ScrollViewViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = false
     }
     
+    private func setupScrollView() {
+        scrollView = UIScrollView(frame: view.bounds)
+        scrollView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        scrollView.backgroundColor = .systemBackground
+        scrollView.contentSize = imageView.bounds.size
+        scrollView.delegate = self
+        scrollView.addSubview(imageView)
+        view.addSubview(scrollView)
+        imageView.anchor(top: scrollView.topAnchor, bottom: scrollView.bottomAnchor, leading: scrollView.leadingAnchor, trailing: scrollView.trailingAnchor)
+    }
+
 }
 
 extension ScrollViewViewController: UIScrollViewDelegate {
@@ -59,18 +55,19 @@ extension ScrollViewViewController: UIScrollViewDelegate {
     }
     
     func scrollViewDidZoom(_ scrollView: UIScrollView) {
-        updateMinZoomScale(view.bounds.size)
+        return updateMinZoomScale(scrollView.bounds.size)
     }
     
     func updateMinZoomScale(_ size: CGSize) {
-        let widthScale = size.width / imageView.bounds.width
-        let heightScale = size.height / imageView.bounds.height
+        let imageSize = imageView.bounds.size
+        let widthScale = size.width / imageSize.width
+        let heightScale = size.height / imageSize.height
         
         let minScale = min(widthScale, heightScale)
         scrollView.minimumZoomScale = minScale
-        scrollView.maximumZoomScale = 4
+        scrollView.maximumZoomScale = 3.0
+        
         scrollView.zoomScale = minScale
     }
-    
     
 }

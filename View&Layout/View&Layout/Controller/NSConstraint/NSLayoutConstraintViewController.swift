@@ -37,7 +37,7 @@ class NSLayoutConstraintViewController: UIViewController {
         
         view.addSubview(fv)
         fv.addSubview(fi)
-        
+        self.hidenTitleBackButton()
     }
     
     override func viewDidLayoutSubviews() {

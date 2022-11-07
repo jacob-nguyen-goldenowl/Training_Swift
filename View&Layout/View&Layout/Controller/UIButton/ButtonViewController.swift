@@ -39,6 +39,7 @@ class ButtonViewController: UIViewController {
         view.backgroundColor = .systemBackground
         view.addSubview(fb)
         view.addSubview(sb)
+        self.hidenTitleBackButton()
     }
     
     override func viewDidLayoutSubviews() {

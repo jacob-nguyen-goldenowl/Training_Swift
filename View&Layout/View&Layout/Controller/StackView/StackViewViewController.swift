@@ -121,7 +121,8 @@ class StackViewViewController: UIViewController {
         verStackView.axis = .vertical
         verStackView.distribution = .equalSpacing 
         
-        
+        self.hidenTitleBackButton()
+
         view.addSubview(verStackView)
         
     }

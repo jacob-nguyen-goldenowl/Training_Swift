@@ -29,6 +29,7 @@ class TextViewViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         view.addSubview(textView)
+        self.hidenTitleBackButton()
     }
     
     override func viewDidLayoutSubviews() {

@@ -37,6 +37,7 @@ class TextFiledViewController: UIViewController {
         view.backgroundColor = .systemBackground
         view.addSubview(tf1)
         view.addSubview(tf2)
+        self.hidenTitleBackButton()
         
         let overlayButton = UIButton(type: .custom)
         let bookmarkImage = UIImage(systemName: "bookmark")
