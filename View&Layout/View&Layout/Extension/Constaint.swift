@@ -65,3 +65,10 @@ extension UIView {
     
 }
 
+
+extension UIViewController {
+    
+    func hidenTitleBackButton() {
+        navigationController?.navigationBar.topItem?.title = ""
+    }
+}

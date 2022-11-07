@@ -54,6 +54,7 @@ class UILabelViewController: UIViewController {
         view.backgroundColor = .systemBackground
         view.addSubview(fl)
         view.addSubview(sl)
+        self.hidenTitleBackButton()
     }
     
     override func viewDidLayoutSubviews() {

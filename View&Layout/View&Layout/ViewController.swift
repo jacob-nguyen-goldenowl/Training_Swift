@@ -21,7 +21,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         setUpTableView()
-//        configureNavigationBar()
     }
     
     private func setUpTableView() {
@@ -32,11 +31,12 @@ class ViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        configureNavigationBar()
+        setupNavigationBar()
+        title = "View & Layout"
     }
         
-    private func configureNavigationBar() {
-                        
+    private func setupNavigationBar() {
+        
         let searchItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(tap))
         let bookMarkItem = UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(tap))
         
@@ -46,6 +46,7 @@ class ViewController: UIViewController {
         navigationItem.leftBarButtonItem = settingItem
         
         navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationItem.largeTitleDisplayMode = .always
 
         let appearance = UINavigationBarAppearance()
         appearance.backgroundColor = .purple.withAlphaComponent(0.6)
@@ -118,9 +119,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
                 vc.title = nameIndex
                 navigationController?.pushViewController(vc, animated: true)
             case 10:
-//                let vc = UINavigationController(rootViewController: TableViewViewController())
-//                vc.modalPresentationStyle = .fullScreen
-//                present(vc, animated: true)
                 let vc = TableViewViewController()
                 vc.title = nameIndex
                 navigationController?.pushViewController(vc, animated: true)

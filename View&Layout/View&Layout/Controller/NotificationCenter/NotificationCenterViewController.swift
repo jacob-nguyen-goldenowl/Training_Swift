@@ -33,6 +33,7 @@ class NotificationCenterViewController: UIViewController {
         view.backgroundColor = .systemBackground
         setUpUI()
         receiveNotify()
+        self.hidenTitleBackButton()
     }
     
     private func setUpUI() {

@@ -65,6 +65,7 @@ class UIViewViewController: UIViewController {
         view.backgroundColor = UIColor.systemBackground
         setUpUI()
         createView()
+        self.hidenTitleBackButton()
     }
     
     private func setUpUI() {

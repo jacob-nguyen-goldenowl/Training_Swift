@@ -46,6 +46,7 @@ class LifeCycleViewController: UIViewController {
         print("Did load view is running...")
         view.backgroundColor = .systemBackground
         view.addSubview(lifeCycleButton)
+        self.hidenTitleBackButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,7 +73,7 @@ class LifeCycleViewController: UIViewController {
         super.viewDidLayoutSubviews()
         configureConstraintButton()
     }
-
+    
     private func configureConstraintButton() {
         NSLayoutConstraint.activate([
             lifeCycleButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),

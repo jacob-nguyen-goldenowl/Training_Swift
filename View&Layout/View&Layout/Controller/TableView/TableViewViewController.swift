@@ -74,6 +74,7 @@ class TableViewViewController: UIViewController {
                 
         navItem?.largeTitleDisplayMode = .never
         
+        self.hidenTitleBackButton()
     }
 
 }

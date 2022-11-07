@@ -42,6 +42,7 @@ class CollectionViewViewController: UIViewController {
         
         collectionView.delegate = self
         collectionView.dataSource = self
+        self.hidenTitleBackButton()
     }
     
     override func viewDidLayoutSubviews() {
