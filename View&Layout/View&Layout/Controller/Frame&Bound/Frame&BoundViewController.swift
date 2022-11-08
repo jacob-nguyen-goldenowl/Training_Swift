@@ -71,6 +71,13 @@ class Frame_BoundViewController: UIViewController {
         return slider
     }()
     
+    private var rotationSlider: UISlider = {
+        let slider = UISlider()
+        slider.minimumValue = 0
+        slider.maximumValue = 200
+        return slider
+    }()
+    
     // MARK: - Label view
     
     private var frameXLabel: UILabel = {
@@ -94,6 +101,12 @@ class Frame_BoundViewController: UIViewController {
     private var frameHeightLabel: UILabel = {
         let lbl = UILabel()
         lbl.text = "Frame height = 50"
+        return lbl
+    }()
+    
+    private var rotationLabel: UILabel = {
+        let lbl = UILabel()
+        lbl.text = "Rotation = 0"
         return lbl
     }()
     
@@ -127,6 +140,11 @@ class Frame_BoundViewController: UIViewController {
         return vw
     }()
     
+    lazy var rotationView: UIView = {
+        let vw = UIView()
+        return vw
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -140,7 +158,7 @@ class Frame_BoundViewController: UIViewController {
         view.addSubview(controlView)
         
         mainView.addSubview(cyanView)
-        cyanView.setAnchorPoint(CGPoint(x: 0, y: 0))
+        cyanView.setAnchorPoint(CGPoint(x: 0.5, y: 0.5))
         mainView.addSubview(redView)
         
         setupConstraintViews()
@@ -158,6 +176,7 @@ class Frame_BoundViewController: UIViewController {
         frameYSider.addTarget(self, action: #selector(didTapChangeFrameY(_:)), for: .valueChanged)
         frameWidthSider.addTarget(self, action: #selector(didTapChangeFrameWidth(_:)), for: .valueChanged)
         frameHeightSider.addTarget(self, action: #selector(didTapChangeFrameHeight(_:)), for: .valueChanged)
+        rotationSlider.addTarget(self, action: #selector(didTapChangeRotation(_:)), for: .valueChanged)
     }
     
     private func setupConstraintViews() {  
@@ -195,7 +214,7 @@ class Frame_BoundViewController: UIViewController {
         verStackView.distribution = .fillEqually
         verStackView.spacing = 20
         
-        [frameXView, frameYView, frameWidthView, frameHeightView].forEach {
+        [frameXView, frameYView, frameWidthView, frameHeightView, rotationView].forEach {
             verStackView.addArrangedSubview($0)
         }
         
@@ -235,6 +254,11 @@ class Frame_BoundViewController: UIViewController {
                                  stack: frameHeightStackView,
                                  slider: frameHeightSider,
                                  label: frameHeightLabel)
+        
+        configureStackHorizontal(view: rotationView,
+                                 stack: rotationStackView,
+                                 slider: rotationSlider,
+                                 label: rotationLabel)
     
         redView.frame = CGRect( x: cyanView.frame.origin.x,
                                 y: cyanView.frame.origin.y,
@@ -264,7 +288,8 @@ class Frame_BoundViewController: UIViewController {
         frameYLabel.text = "Frame Y = \(Int(cyanView.frame.origin.y))"
         frameWidthLabel.text = "Frame width = \(Int(cyanView.frame.size.width))"
         frameHeightLabel.text = "Frame height = \(Int(cyanView.frame.size.height))"
-        rotationLabel.text = "Rotation = \(Float(rotationSlider.value))"
+        rotationLabel.text = "Rotation = \(Int(rotationSlider.value))"
+        
         print("Bound x: \(cyanView.bounds.origin.x)")
         print("Bound y: \(cyanView.bounds.origin.y)")
         print("Bound with: \(cyanView.bounds.size.width)")
@@ -296,11 +321,17 @@ extension Frame_BoundViewController {
         updateTextLabel()
     }
     
+    @objc func didTapChangeRotation(_ slider: UISlider) {
+        cyanView.transform = CGAffineTransform(rotationAngle: CGFloat(slider.value))
+        updateTextLabel()
+    }
+    
 }
 
-
 extension UIView {
+    
     func setAnchorPoint(_ point: CGPoint) {
+        
         var newPoint = CGPoint(x: bounds.size.width * point.x, y: bounds.size.height * point.y)
         var oldPoint = CGPoint(x: bounds.size.width * layer.anchorPoint.x, y: bounds.size.height * layer.anchorPoint.y);
         
