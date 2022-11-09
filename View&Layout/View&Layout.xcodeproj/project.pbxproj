@@ -22,7 +22,7 @@
 		04E914BA290FB34E00A16B6F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04E914B8290FB34E00A16B6F /* LaunchScreen.storyboard */; };
 		04E914C3290FBDE700A16B6F /* LifeCycleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E914C2290FBDE700A16B6F /* LifeCycleViewController.swift */; };
 		04E914C5290FBDFB00A16B6F /* UIViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E914C4290FBDFB00A16B6F /* UIViewViewController.swift */; };
-		04E914C7290FBE1B00A16B6F /* Frame&BoundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E914C6290FBE1B00A16B6F /* Frame&BoundViewController.swift */; };
+		04E914C7290FBE1B00A16B6F /* FrameAndBoundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E914C6290FBE1B00A16B6F /* FrameAndBoundViewController.swift */; };
 		04E914C9290FBE4600A16B6F /* NSLayoutConstraintViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E914C8290FBE4600A16B6F /* NSLayoutConstraintViewController.swift */; };
 		04E914CB290FBE5E00A16B6F /* UIVCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E914CA290FBE5E00A16B6F /* UIVCViewController.swift */; };
 		04E914CD290FBE7100A16B6F /* UINaviViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E914CC290FBE7100A16B6F /* UINaviViewController.swift */; };
@@ -57,7 +57,7 @@
 		04E914BB290FB34E00A16B6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04E914C2290FBDE700A16B6F /* LifeCycleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeCycleViewController.swift; sourceTree = "<group>"; };
 		04E914C4290FBDFB00A16B6F /* UIViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewViewController.swift; sourceTree = "<group>"; };
-		04E914C6290FBE1B00A16B6F /* Frame&BoundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Frame&BoundViewController.swift"; sourceTree = "<group>"; };
+		04E914C6290FBE1B00A16B6F /* FrameAndBoundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameAndBoundViewController.swift; sourceTree = "<group>"; };
 		04E914C8290FBE4600A16B6F /* NSLayoutConstraintViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraintViewController.swift; sourceTree = "<group>"; };
 		04E914CA290FBE5E00A16B6F /* UIVCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIVCViewController.swift; sourceTree = "<group>"; };
 		04E914CC290FBE7100A16B6F /* UINaviViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINaviViewController.swift; sourceTree = "<group>"; };
@@ -176,7 +176,7 @@
 		04E914E5290FD35700A16B6F /* Frame&Bound */ = {
 			isa = PBXGroup;
 			children = (
-				04E914C6290FBE1B00A16B6F /* Frame&BoundViewController.swift */,
+				04E914C6290FBE1B00A16B6F /* FrameAndBoundViewController.swift */,
 			);
 			path = "Frame&Bound";
 			sourceTree = "<group>";
@@ -383,7 +383,7 @@
 				04E914D5290FD0EA00A16B6F /* TextViewViewController.swift in Sources */,
 				045CA91329127A1600565BE5 /* HeaderCollectionReusableView.swift in Sources */,
 				04E914D3290FD0DE00A16B6F /* TextFiledViewController.swift in Sources */,
-				04E914C7290FBE1B00A16B6F /* Frame&BoundViewController.swift in Sources */,
+				04E914C7290FBE1B00A16B6F /* FrameAndBoundViewController.swift in Sources */,
 				04E914DE290FD12200A16B6F /* StackViewViewController.swift in Sources */,
 				04E914C3290FBDE700A16B6F /* LifeCycleViewController.swift in Sources */,
 				04E914D1290FD0D000A16B6F /* ButtonViewController.swift in Sources */,

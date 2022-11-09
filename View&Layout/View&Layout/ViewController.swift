@@ -87,7 +87,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
                 vc.title = nameIndex
                 navigationController?.pushViewController(vc, animated: true)
             case 2: 
-                let vc = Frame_BoundViewController()
+                let vc = FrameAndBoundViewController()
                 vc.title = nameIndex
                 navigationController?.pushViewController(vc, animated: true)
             case 3:
