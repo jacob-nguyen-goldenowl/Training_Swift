@@ -32,9 +32,6 @@ extension MovieMO : Identifiable {
             fatalError("Something error")
         }
         
-        
-        print(isExist(title: title))
-        
         if isExist(title: title) == true {
             
             movie.title = title
