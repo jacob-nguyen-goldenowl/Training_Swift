@@ -23,21 +23,21 @@ class FirestoreManager {
     
     private init() {}
     
-    var completionHandlerGetMovie: (([MovieFirestore]) -> Void)?
+    var completionHandlerGetMovie: ([MovieFirestore]) -> Void = {_ in}
     
     private let database = Firestore.firestore()
     private let storage = Storage.storage().reference()
     
-    public func writeDataToFirestore(title: String, description: String, releaseDate: String, image: UIImageView, id: Int, nameImage: String) {
+    public func writeDataToFirestore(title: String, description: String, releaseDate: String, image: UIImageView, uid: Int, nameImage: String) {
         
-        let documentReference = database.collection("movie").document("\(id)")
+        let documentReference = database.collection("movie").document("\(uid)")
         
-        if isMovieExist(id) == false {
+        if isMovieExist(uid) == false {
             return 
         } else {
             
             dowloadURL(image: image, nameImage: nameImage) { url in
-                documentReference.setData ( ["id": id,
+                documentReference.setData ( ["id": uid,
                                              "title": title,
                                              "image": url,
                                              "description": description,
@@ -61,15 +61,21 @@ class FirestoreManager {
             }
             
             for document in documents {
+                
                 let data = document.data()
                 let title = data["title"] as? String ?? ""
                 let description = data["description"] as? String ?? ""
                 let image = data["image"] as? String ?? ""
                 let releaseDate = data["releaseDate"] as? String ?? ""
-                let newMovie = MovieFirestore(title: title, description: description, image: image, releaseDate: releaseDate)
+                
+                let newMovie = MovieFirestore( title: title,
+                                               description: description,
+                                               image: image,
+                                               releaseDate: releaseDate)
                 movieArray.append(newMovie)
+                
             }
-            self.completionHandlerGetMovie!(movieArray)
+            self.completionHandlerGetMovie(movieArray)
         }
             
     }

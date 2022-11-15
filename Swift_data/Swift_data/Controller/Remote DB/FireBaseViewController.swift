@@ -15,7 +15,6 @@ class FireBaseViewController: UIViewController {
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }
-            print("It runing")
         }
     }
     
@@ -45,17 +44,15 @@ class FireBaseViewController: UIViewController {
                                leading: view.leadingAnchor,
                                trailing: view.trailingAnchor)
         getDataFireStore()
-        print("Hello")
     }
     
     private func getDataFireStore() {
         FirestoreManager.shared.readDataToFirestore()
-        FirestoreManager.shared.completionHandlerGetMovie = { movies in
-            self.movies = movies
+        FirestoreManager.shared.completionHandlerGetMovie = { [weak self] movies in
+            self?.movies = movies
         }
     }
     
-
 }
 
 extension FireBaseViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -64,7 +61,6 @@ extension FireBaseViewController: UICollectionViewDelegate, UICollectionViewData
         return 1
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(movies.count)
         if (movies.count == 0) {
             self.collectionView.setEmptyMessage("Nothing to show :(")
         } else {
@@ -79,10 +75,12 @@ extension FireBaseViewController: UICollectionViewDelegate, UICollectionViewData
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FireBaseCollectionViewCell.identifier, for: indexPath) as? FireBaseCollectionViewCell else {
             fatalError("Error when reusable cell")
         }
+        
         let movie = movies[indexPath.row]
         cell.layer.cornerRadius = ((view.frame.size.width/3) - 10)/2
         cell.clipsToBounds = true
         cell.configData(image: movie.image)
+        
         return cell
         
     }
@@ -107,6 +105,5 @@ extension FireBaseViewController: UICollectionViewDelegateFlowLayout {
         return 5
     }
     
-
 }
 
