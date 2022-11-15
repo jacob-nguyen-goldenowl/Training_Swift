@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 struct TrendingResponse: Codable {
     let page: Int
     let results: [Movie]

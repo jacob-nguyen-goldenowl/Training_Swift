@@ -81,7 +81,7 @@ class APIViewController: UIViewController {
                 imageView.image = UIImage(data: data)
                 completion(imageView)
             }
-            
+        
         }.resume()
         
     }
@@ -119,18 +119,21 @@ extension APIViewController: UITableViewDelegate, UITableViewDataSource {
 extension APIViewController: APITableViewCellDelegate {
     
     func handleDownloadMovie(_ data: APITableViewCell) {
-        
+                
         guard let indexPath = tableview.indexPath(for: data) else { return }
         let movie = trendingModel[indexPath.row]
-        
         
         if let title = movie.original_title,
            let image = movie.poster,
            let date = movie.release_date
         {
+            
             saveImage(url: image) { [self] img in
-                _ = movies.insertNewMovie(title: title, overview: movie.description, image: img, releaseDate: date)
+                
+                    _ = movies.insertNewMovie(title: title, overview: movie.description, image: img, releaseDate: date)
+                FirestoreManager.shared.writeDataToFirestore(title: title, description: movie.description, releaseDate: date, image: img, id: movie.id, nameImage: image)
             }
+            
         }
         
     }
