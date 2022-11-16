@@ -130,7 +130,7 @@ extension APIViewController: APITableViewCellDelegate {
             
             saveImage(url: image) { [self] img in
                 
-                    _ = movies.insertNewMovie(title: title, overview: movie.description, image: img, releaseDate: date)
+                _ = movies.insertNewMovie(title: title, overview: movie.description, image: img, releaseDate: date)
                 FirestoreManager.shared.writeDataToFirestore(title: title, description: movie.description, releaseDate: date, image: img, uid: movie.id, nameImage: image)
             }
             

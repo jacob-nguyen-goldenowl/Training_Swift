@@ -9,13 +9,15 @@ import UIKit
 
 final class ImageCache {
     
+    static let shared = ImageCache()
+    
     private let imageCache = NSCache<NSString, UIImage>()
     
     private let initiatedQueue = DispatchQueue.global(qos: .userInitiated)
     
     private(set) var imageKeys: [NSString]
     
-    init() {
+    private init() {
         imageKeys = []
         for i in 1...40 {
             imageKeys.append(NSString(string: "image\(i)"))
@@ -45,6 +47,7 @@ final class ImageCache {
                 
                 if let image = UIImage(data: data) {
                     self.imageCache.setObject(image, forKey: imageKey)
+                    
                     completion(image, index)
                     
                 }
