@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		044400F12924959000516037 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044400F02924959000516037 /* ImageCache.swift */; };
 		047CF5192918A1900087C28C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047CF5182918A1900087C28C /* AppDelegate.swift */; };
 		047CF51B2918A1900087C28C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047CF51A2918A1900087C28C /* SceneDelegate.swift */; };
 		047CF51D2918A1900087C28C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047CF51C2918A1900087C28C /* ViewController.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		044400F02924959000516037 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		047CF5152918A1900087C28C /* Swift_data.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swift_data.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		047CF5182918A1900087C28C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		047CF51A2918A1900087C28C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +86,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		044400EF292494FC00516037 /* CachesManager */ = {
+			isa = PBXGroup;
+			children = (
+				044400F02924959000516037 /* ImageCache.swift */,
+			);
+			path = CachesManager;
+			sourceTree = "<group>";
+		};
 		04462D022921DC080011E6B2 /* CoreMovie */ = {
 			isa = PBXGroup;
 			children = (
@@ -164,6 +174,7 @@
 		047CF53C2918CCC40087C28C /* Remote DB */ = {
 			isa = PBXGroup;
 			children = (
+				044400EF292494FC00516037 /* CachesManager */,
 				04BE228E2923709100FE8E1D /* FirestoreManager */,
 				04E8E442291A0B4700CEBB57 /* Cell */,
 				04E8E43F2919F09D00CEBB57 /* Model */,
@@ -376,6 +387,7 @@
 				047CF5192918A1900087C28C /* AppDelegate.swift in Sources */,
 				047CF5382918CC9A0087C28C /* SQLiteViewController.swift in Sources */,
 				047CF51B2918A1900087C28C /* SceneDelegate.swift in Sources */,
+				044400F12924959000516037 /* ImageCache.swift in Sources */,
 				04D7DDD3291E130500EE382C /* Movie.xcdatamodeld in Sources */,
 				04E8E441291A01CC00CEBB57 /* TrendingResponse.swift in Sources */,
 				047CF5402918CCEC0087C28C /* APIViewController.swift in Sources */,
