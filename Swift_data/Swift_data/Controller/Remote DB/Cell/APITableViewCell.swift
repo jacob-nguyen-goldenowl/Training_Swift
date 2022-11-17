@@ -6,7 +6,7 @@
 //
 
 protocol APITableViewCellDelegate {
-    func handleDownloadMovie(_ data: APITableViewCell)
+    func handleDownloadMovie(currentIndex: IndexPath, isDownload: Bool)
 }
 
 import UIKit
@@ -16,6 +16,10 @@ class APITableViewCell: UITableViewCell {
     static let indentifier = "APITableViewCell"
     
     var delegate: APITableViewCellDelegate?
+    
+    var currentIndex: IndexPath?
+    
+    var isDownload: Bool = false
     
     lazy var imageViewTrending: UIImageView = {
         let img = UIImageView()
@@ -94,7 +98,6 @@ class APITableViewCell: UITableViewCell {
         addSubview(labelrelaseDateTreding)
         addSubview(labelDescriptionTrending)
         contentView.addSubview(downloadButton)
-
     }
     
     private func handleButtonEvent() {
@@ -103,7 +106,7 @@ class APITableViewCell: UITableViewCell {
     
     @objc func didTapDownloadMovie(_ sender: Any?) {
         downloadButton.setImage(UIImage(systemName: "pause.circle"), for: .normal)
-        delegate?.handleDownloadMovie(self)
+        delegate?.handleDownloadMovie(currentIndex: currentIndex!, isDownload: true)
     }
 
     private func setupConstrains() {
@@ -154,11 +157,19 @@ class APITableViewCell: UITableViewCell {
         
     }
     
-    public func configCell(_ data: Movie) {
+    public func configCell(_ data: Movie, isDownload: Bool) {
+        self.isDownload = isDownload
         fetchImage(urlString: data.poster ?? "", imageView: imageViewTrending)
         labelTitleTrending.text = data.original_title ?? "No name"
         labelrelaseDateTreding.text = "Release date: \(String.formatedDate(string: data.release_date ?? "None"))"
         labelDescriptionTrending.text = data.description
+        
+        if isDownload {
+            downloadButton.setImage(UIImage(systemName: "pause.circle"), for: .normal)
+        } else {
+            downloadButton.setImage(UIImage(systemName: "arrow.down.circle"), for: .normal)
+        }
+        
     }
     
     private func fetchImage(urlString: String, imageView: UIImageView) {
@@ -185,6 +196,7 @@ class APITableViewCell: UITableViewCell {
         }
         task.resume()
     }
+    
     
 }
 

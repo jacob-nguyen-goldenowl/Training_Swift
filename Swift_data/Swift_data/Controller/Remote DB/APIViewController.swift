@@ -7,14 +7,25 @@
 
 import UIKit
 
+struct Status {
+    var isDownload: Bool
+    var itemIndex: Int
+}
+
 class APIViewController: UIViewController {
     
     private let movies = MovieMO()
     
+//    private var movieCell = [Movies]()
+    
+    private var status = [Status]()
+        
     private var trendingModel: [Movie] = [] {
         didSet {
             DispatchQueue.main.async { [weak self] in
                 self?.tableview.reloadData()
+                self?.getStatusButton()
+
             }
         }
     }
@@ -30,6 +41,7 @@ class APIViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         setupTableView()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -46,6 +58,7 @@ class APIViewController: UIViewController {
                           bottom: view.bottomAnchor,
                           leading: view.leadingAnchor,
                           trailing: view.trailingAnchor)
+        tableview.showsVerticalScrollIndicator = false
     }
     
     private func fetchData() {
@@ -86,6 +99,12 @@ class APIViewController: UIViewController {
         
     }
     
+    private func getStatusButton() {
+        for i in 0 ..< trendingModel.count {
+            status.append(Status(isDownload: false, itemIndex: i))
+        }
+    }
+    
 }
 
 extension APIViewController: UITableViewDelegate, UITableViewDataSource {
@@ -101,8 +120,15 @@ extension APIViewController: UITableViewDelegate, UITableViewDataSource {
             fatalError("Some error when reusable cell")
         }
         
-        cell.configCell(trendingModel[indexPath.row])
+        cell.currentIndex = indexPath
+        
+        let index = trendingModel[indexPath.row]
+        
+        if status[indexPath.item].itemIndex == indexPath.item {
+            cell.configCell(index, isDownload: status[indexPath.item].isDownload)
+        }
         cell.delegate = self
+        
         return cell
     }
     
@@ -118,24 +144,34 @@ extension APIViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension APIViewController: APITableViewCellDelegate {
     
-    func handleDownloadMovie(_ data: APITableViewCell) {
-                
-        guard let indexPath = tableview.indexPath(for: data) else { return }
-        let movie = trendingModel[indexPath.row]
+    func handleDownloadMovie(currentIndex: IndexPath, isDownload: Bool) {
+        
+        let movie = trendingModel[currentIndex.item]
+        
+        status[currentIndex.item].isDownload = true
         
         if let title = movie.original_title,
            let image = movie.poster,
            let date = movie.release_date
         {
             
-            saveImage(url: image) { [self] img in
+            saveImage(url: image) { img in
                 
-                _ = movies.insertNewMovie(title: title, overview: movie.description, image: img, releaseDate: date)
-                FirestoreManager.shared.writeDataToFirestore(title: title, description: movie.description, releaseDate: date, image: img, uid: movie.id, nameImage: image)
+                self.movies.insertNewMovie(title: title,
+                                           overview: movie.description,
+                                           image: img,
+                                           releaseDate: date)
+                
+                FirestoreManager.shared.writeDataToFirestore(title: title,
+                                                             description: movie.description,
+                                                             releaseDate: date,
+                                                             image: img,
+                                                             uid: movie.id,
+                                                             nameImage: image)
+                
             }
             
         }
         
     }
-    
 }

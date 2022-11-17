@@ -25,6 +25,7 @@ extension MovieMO {
 
 extension MovieMO : Identifiable {
     
+    @discardableResult
     public func insertNewMovie(title: String, overview: String, image: UIImageView, releaseDate: String) -> MovieMO? {
         
         let context = AppDelegate.managerObjectContext
