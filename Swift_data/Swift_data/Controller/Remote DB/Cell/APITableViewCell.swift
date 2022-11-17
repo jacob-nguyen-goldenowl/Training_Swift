@@ -12,7 +12,6 @@ protocol APITableViewCellDelegate {
 import UIKit
 
 class APITableViewCell: UITableViewCell {
-
     static let indentifier = "APITableViewCell"
     
     var delegate: APITableViewCellDelegate?
@@ -110,7 +109,6 @@ class APITableViewCell: UITableViewCell {
     }
 
     private func setupConstrains() {
-        
         imageViewTrending.anchor( top: topAnchor, 
                                   bottom: bottomAnchor, 
                                   leading: leadingAnchor, 
@@ -160,8 +158,8 @@ class APITableViewCell: UITableViewCell {
     public func configCell(_ data: Movie, isDownload: Bool) {
         self.isDownload = isDownload
         fetchImage(urlString: data.poster ?? "", imageView: imageViewTrending)
-        labelTitleTrending.text = data.original_title ?? "No name"
-        labelrelaseDateTreding.text = "Release date: \(String.formatedDate(string: data.release_date ?? "None"))"
+        labelTitleTrending.text = data.originalName ?? "No name"
+        labelrelaseDateTreding.text = "Release date: \(String.formatedDate(string: data.releaseDate ?? "None"))"
         labelDescriptionTrending.text = data.description
         
         if isDownload {
@@ -173,20 +171,15 @@ class APITableViewCell: UITableViewCell {
     }
     
     private func fetchImage(urlString: String, imageView: UIImageView) {
-        // get data url
-        // convert data to image 
-        // set image
         guard let url = URL(string: "https://image.tmdb.org/t/p/w500\(urlString)") else {
             return
         }
         
         // run in background thread
         let task = URLSession.shared.dataTask(with: url) { data, _, error in
-            
             guard let data = data , error == nil else {
                 return
             }
-            
             // run in main thread
             DispatchQueue.main.async {
                 let image = UIImage(data: data)
@@ -196,7 +189,6 @@ class APITableViewCell: UITableViewCell {
         }
         task.resume()
     }
-    
     
 }
 

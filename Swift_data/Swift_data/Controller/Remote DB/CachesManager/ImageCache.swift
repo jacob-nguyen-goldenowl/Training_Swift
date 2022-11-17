@@ -8,20 +8,17 @@
 import UIKit
 
 final class ImageCache {
-    
     static let shared = ImageCache()
     
     private init() {}
     
     private let imageCache = NSCache<NSNumber, UIImage>()
-    
     private let initiatedQueue = DispatchQueue.global(qos: .userInitiated)
     
     func fetchImage(atIndex index: Int,
                     urlString: String,
                     completion: @escaping (UIImage?, Int) -> Void) 
     {
-        
         let imageKey = NSNumber(value: index)
         
         if let cahed = self.imageCache.object(forKey: imageKey) {
@@ -30,12 +27,10 @@ final class ImageCache {
         }   
         
         loadImage(withURL: urlString) { [weak self] (image) in
-            
             guard let self = self, let image = image else {
                 completion(nil, index)
                 return
             }
-            
             self.imageCache.setObject(image, forKey: imageKey)
             completion(image, index)
             

@@ -7,25 +7,16 @@
 
 import UIKit
 
-struct Status {
-    var isDownload: Bool
-    var itemIndex: Int
-}
-
 class APIViewController: UIViewController {
-    
     private let movies = MovieMO()
-    
-//    private var movieCell = [Movies]()
-    
-    private var status = [Status]()
+        
+    private var status = [Bool]()
         
     private var trendingModel: [Movie] = [] {
         didSet {
             DispatchQueue.main.async { [weak self] in
                 self?.tableview.reloadData()
                 self?.getStatusButton()
-
             }
         }
     }
@@ -41,7 +32,6 @@ class APIViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         setupTableView()
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -67,7 +57,6 @@ class APIViewController: UIViewController {
     }
     
     private func getTrendingMovieResponse(with urlString: String) {
-    
         APIClient<TrendingResponse>.fetch(with: urlString, method: .get) { result in
             switch result {
                 case .success(let data):
@@ -76,11 +65,9 @@ class APIViewController: UIViewController {
                     print(err)
             }
         }
-        
     }
     
-    private func saveImage(url: String, completion: @escaping (UIImageView) -> Void ) {
-        
+    private func saveImage(url: String, completion: @escaping (UIImageView?) -> Void ) {
         let imageView = UIImageView()
         
         guard let urlString = URL(string: "https://image.tmdb.org/t/p/w500\(url)") else {
@@ -89,26 +76,25 @@ class APIViewController: UIViewController {
         
         URLSession.shared.dataTask(with: urlString) { data, _, error in
             
-            guard let data = data, error == nil else { return }
+            guard let data = data, error == nil else { 
+                completion(nil)
+                return 
+            }
             DispatchQueue.main.async {
                 imageView.image = UIImage(data: data)
                 completion(imageView)
             }
-        
         }.resume()
-        
     }
     
     private func getStatusButton() {
-        for i in 0 ..< trendingModel.count {
-            status.append(Status(isDownload: false, itemIndex: i))
+        trendingModel.forEach {_ in 
+            status.append(false)
         }
     }
-    
 }
 
 extension APIViewController: UITableViewDelegate, UITableViewDataSource {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return trendingModel.count 
         
@@ -121,13 +107,12 @@ extension APIViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         cell.currentIndex = indexPath
-        
-        let index = trendingModel[indexPath.row]
-        
-        if status[indexPath.item].itemIndex == indexPath.item {
-            cell.configCell(index, isDownload: status[indexPath.item].isDownload)
-        }
         cell.delegate = self
+
+        let movie = trendingModel[indexPath.row]
+        if indexPath.item <= status.count {
+            cell.configCell(movie, isDownload: status[indexPath.item])
+        }
         
         return cell
     }
@@ -139,39 +124,34 @@ extension APIViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableview.deselectRow(at: indexPath, animated: true)
     }
-    
 }
 
 extension APIViewController: APITableViewCellDelegate {
-    
     func handleDownloadMovie(currentIndex: IndexPath, isDownload: Bool) {
-        
         let movie = trendingModel[currentIndex.item]
+        status[currentIndex.item] = true
         
-        status[currentIndex.item].isDownload = true
-        
-        if let title = movie.original_title,
+        if let title = movie.originalTitle,
            let image = movie.poster,
-           let date = movie.release_date
+           let date = movie.releaseDate
         {
-            
             saveImage(url: image) { img in
-                
-                self.movies.insertNewMovie(title: title,
-                                           overview: movie.description,
-                                           image: img,
-                                           releaseDate: date)
-                
-                FirestoreManager.shared.writeDataToFirestore(title: title,
-                                                             description: movie.description,
-                                                             releaseDate: date,
-                                                             image: img,
-                                                             uid: movie.id,
-                                                             nameImage: image)
-                
+                if let newImage = img {
+                    self.movies.insertNewMovie(title: title,
+                                               overview: movie.description,
+                                               image: newImage,
+                                               releaseDate: date)
+                    
+                    FirestoreManager.shared.writeDataToFirestore(title: title,
+                                                                 description: movie.description,
+                                                                 releaseDate: date,
+                                                                 image: newImage,
+                                                                 uid: movie.id,
+                                                                 nameImage: image)
+                } else {
+                    print("Image not found!")
+                }
             }
-            
         }
-        
     }
 }
