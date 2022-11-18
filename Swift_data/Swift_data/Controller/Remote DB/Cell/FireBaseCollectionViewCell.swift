@@ -9,7 +9,6 @@ import UIKit
 import FirebaseStorage
 
 class FireBaseCollectionViewCell: UICollectionViewCell {
-    
     static let identifier = "FireBaseCollectionViewCell"
 
     lazy var imageView: UIImageView = {

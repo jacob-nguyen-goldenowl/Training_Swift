@@ -18,7 +18,6 @@ struct MovieFirestore {
 }
 
 class FirestoreManager {
-    
     static var shared = FirestoreManager()
     
     private init() {}
@@ -29,37 +28,33 @@ class FirestoreManager {
     private let storage = Storage.storage().reference()
     
     public func writeDataToFirestore(title: String, description: String, releaseDate: String, image: UIImageView, uid: Int, nameImage: String) {
-        
         let documentReference = database.collection("movie").document("\(uid)")
-        
         if isMovieExist(uid) == false {
             return 
         } else {
-            
             dowloadURL(image: image, nameImage: nameImage) { url in
-                documentReference.setData ( ["id": uid,
-                                             "title": title,
-                                             "image": url,
-                                             "description": description,
-                                             "releaseDate": releaseDate] )
+                if let newURL = url {
+                    documentReference.setData ( ["id": uid,
+                                                 "title": title,
+                                                 "image": newURL,
+                                                 "description": description,
+                                                 "releaseDate": releaseDate] )
+                } else {
+                    print("Image not found.")
+                }
             }
-            
         }
-        
     }
     
     public func readDataToFirestore() {
-        
         var movieArray: [MovieFirestore] = []
-
+        
         let documentReference = database.collection("movie")
         
         documentReference.getDocuments { snapshot, error in
-            
             guard let documents = snapshot?.documents, error == nil else {
                 return
             }
-            
             for document in documents {
                 
                 let data = document.data()
@@ -73,19 +68,15 @@ class FirestoreManager {
                                                image: image,
                                                releaseDate: releaseDate)
                 movieArray.append(newMovie)
-                
             }
             self.completionHandlerGetMovie(movieArray)
         }
-            
     }
     
     private func isMovieExist(_ uid: Int) -> Bool {
-        
         let documentReference = database.collection("movie").document("\(uid)")
         
         documentReference.getDocument { document, error in
-            
             if let document = document {
                 if document.exists {
                     print("Movie already exists. Document data: \(String(describing: document.data()))")
@@ -93,35 +84,29 @@ class FirestoreManager {
                 }
             }
         }
-        
         return true
     }
     
-    private func dowloadURL(image: UIImageView, nameImage: String, completion: @escaping (String) -> Void ) {
-        
+    private func dowloadURL(image: UIImageView, nameImage: String, completion: @escaping (String?) -> Void ) {
         let ref = self.storage.child("images/\(nameImage)")
         
         guard let imageData = image.image?.pngData() else {
+            completion(nil)
             return
         }
-        
         ref.putData(imageData) { data, error in
-            
             guard error == nil else {
+                completion(nil)
                 print("Failed to upload")
                 return
             }
-            
             ref.downloadURL { url, error in
-                
                 guard let url = url, error == nil else {
-                    print("Error download")
+                    completion(nil)
                     return
                 }  
                 completion("\(url)")
             }
         }
-        
     }
-    
 }

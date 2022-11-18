@@ -17,6 +17,15 @@ class FireBaseViewController: UIViewController {
         }
     }
     
+    private var spiner: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView()
+        indicator.style = .large
+        indicator.hidesWhenStopped = true
+        indicator.color = .systemRed
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        return indicator
+    }()
+    
     private let imageCache = ImageCache.shared
 
     private var collectionView: UICollectionView = {
@@ -46,6 +55,13 @@ class FireBaseViewController: UIViewController {
                               bottom: view.safeAreaLayoutGuide.bottomAnchor,
                               leading: view.leadingAnchor,
                               trailing: view.trailingAnchor)
+        setupSpiner()
+    }
+    
+    private func setupSpiner() {
+        collectionView.addSubview(spiner)
+        spiner.centerXAnchor.constraint(equalTo: collectionView.centerXAnchor).isActive = true
+        spiner.centerYAnchor.constraint(equalTo: collectionView.centerYAnchor).isActive = true
     }
     
     private func getDataFireStore() {
@@ -66,11 +82,10 @@ extension FireBaseViewController: UICollectionViewDelegate, UICollectionViewData
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if (movies.count == 0) {
-            self.collectionView.setEmptyMessage("Nothing to show :(")
+            spiner.startAnimating()
         } else {
             self.collectionView.restore()
         }
-        
         return movies.count
     }
     
@@ -85,14 +100,11 @@ extension FireBaseViewController: UICollectionViewDelegate, UICollectionViewData
         cell.layer.cornerRadius = ((view.frame.size.width/3) - 10)/2
         cell.clipsToBounds = true
         
-        imageCache.fetchImage(atIndex: indexPath.item, urlString: movie.image) { image, itemIndex in
+        self.imageCache.fetchImage(atIndex: indexPath.item, urlString: movie.image) { [weak self] image, itemIndex in
             guard let image = image else { return }
-            DispatchQueue.main.async {
-                cell.imageView.image = image
-            }
+            cell.imageView.image = image
+            self?.spiner.stopAnimating()
         }
-        
-       // cell.configData(image: movie.image)
         
         return cell
         

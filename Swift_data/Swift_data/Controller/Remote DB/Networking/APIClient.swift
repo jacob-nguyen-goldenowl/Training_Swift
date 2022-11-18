@@ -19,9 +19,7 @@ enum HTTPMethod: String {
 }
 
 final class APIClient<T: Codable> {
-    
     static func fetch(with urlString: String, method: HTTPMethod , completion: @escaping (Result<T, Error>) -> Void) {
-        
         guard let url = URL(string: urlString) else {
             completion(.failure(APIError.invalidURL))
             return
@@ -34,7 +32,6 @@ final class APIClient<T: Codable> {
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            
             guard let data = data else {
                 completion(.failure(APIError.requestFailed))
                 return
@@ -62,7 +59,6 @@ final class APIClient<T: Codable> {
             
         }
         task.resume()
-        
     }
 }
 

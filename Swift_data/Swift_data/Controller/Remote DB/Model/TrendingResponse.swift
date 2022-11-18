@@ -16,22 +16,26 @@ struct Movie: Codable {
     let adult: Bool
     let path: String?
     let id: Int
-    let original_name: String?
-    let original_title: String?
+    let originalName: String?
+    let originalTitle: String?
     let language: String
     let description: String
     let poster: String?
     let type: String
-    let release_date: String?
-    let vote_average: Double
+    let releaseDate: String?
+    let voteAverage: Double
     
     enum CodingKeys: String, CodingKey {
-        case adult, id, original_name, original_title, release_date, vote_average
+        case adult, id
         case path = "backdrop_path"
         case language = "original_language"
+        case originalName = "original_name"
+        case originalTitle = "original_title"
         case description = "overview"
         case poster = "poster_path"
         case type = "media_type"
+        case releaseDate = "release_date"
+        case voteAverage = "vote_average"
     }
     
 }
