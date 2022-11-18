@@ -101,7 +101,6 @@ extension APIViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: APITableViewCell.indentifier, for: indexPath) as? APITableViewCell else {
             fatalError("Some error when reusable cell")
         }
@@ -113,8 +112,8 @@ extension APIViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.row <= status.count {
             cell.configCell(movie, isDownload: status[indexPath.row])
         }
-        
         return cell
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -124,12 +123,13 @@ extension APIViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableview.deselectRow(at: indexPath, animated: true)
     }
+    
 }
 
 extension APIViewController: APITableViewCellDelegate {
     func handleDownloadMovie(currentIndex: IndexPath, isDownload: Bool) {
         let movie = trendingModel[currentIndex.item]
-        status[currentIndex.item] = true
+        status[currentIndex.item] = isDownload
         
         if let title = movie.originalTitle,
            let image = movie.poster,

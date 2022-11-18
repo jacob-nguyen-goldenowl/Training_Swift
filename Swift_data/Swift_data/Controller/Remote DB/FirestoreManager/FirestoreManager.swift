@@ -32,16 +32,16 @@ class FirestoreManager {
         if isMovieExist(uid) == false {
             return 
         } else {
-            if let newURL = url {
-                dowloadURL(image: image, nameImage: nameImage) { url in
+            dowloadURL(image: image, nameImage: nameImage) { url in
+                if let newURL = url {
                     documentReference.setData ( ["id": uid,
                                                  "title": title,
-                                                 "image": url,
+                                                 "image": newURL,
                                                  "description": description,
                                                  "releaseDate": releaseDate] )
+                } else {
+                    print("Image not found.")
                 }
-            } else {
-                print("Error not found.")
             }
         }
     }

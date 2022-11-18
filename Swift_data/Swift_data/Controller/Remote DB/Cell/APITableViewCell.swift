@@ -5,7 +5,7 @@
 //  Created by Nguyễn Hữu Toàn on 08/11/2022.
 //
 
-protocol APITableViewCellDelegate {
+@objc protocol APITableViewCellDelegate {
     func handleDownloadMovie(currentIndex: IndexPath, isDownload: Bool)
 }
 
@@ -14,7 +14,7 @@ import UIKit
 class APITableViewCell: UITableViewCell {
     static let indentifier = "APITableViewCell"
     
-    var delegate: APITableViewCellDelegate?
+    weak var delegate: APITableViewCellDelegate?
     
     var currentIndex: IndexPath?
     
