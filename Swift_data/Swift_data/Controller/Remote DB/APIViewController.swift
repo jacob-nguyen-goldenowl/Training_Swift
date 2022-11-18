@@ -110,8 +110,8 @@ extension APIViewController: UITableViewDelegate, UITableViewDataSource {
         cell.delegate = self
 
         let movie = trendingModel[indexPath.row]
-        if indexPath.item <= status.count {
-            cell.configCell(movie, isDownload: status[indexPath.item])
+        if indexPath.row <= status.count {
+            cell.configCell(movie, isDownload: status[indexPath.row])
         }
         
         return cell
