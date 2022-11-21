@@ -402,6 +402,8 @@
 				DEVELOPMENT_TEAM = 6CUTD2AXT5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "iOS-Design-Patterns/Info.plist";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "WeatherApp needs your location to show you other user";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "WeatherApp needs your location to show you other user";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -430,6 +432,8 @@
 				DEVELOPMENT_TEAM = 6CUTD2AXT5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "iOS-Design-Patterns/Info.plist";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "WeatherApp needs your location to show you other user";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "WeatherApp needs your location to show you other user";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
