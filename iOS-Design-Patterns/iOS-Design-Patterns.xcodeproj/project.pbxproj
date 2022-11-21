@@ -22,6 +22,7 @@
 		04019D12292B595D00EAC5CA /* WeatherResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04019D11292B595D00EAC5CA /* WeatherResponse.swift */; };
 		04019D14292B596A00EAC5CA /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04019D13292B596A00EAC5CA /* Coordinate.swift */; };
 		04019D17292B59CD00EAC5CA /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04019D16292B59CD00EAC5CA /* LocationManager.swift */; };
+		04019D1A292B5A2F00EAC5CA /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04019D19292B5A2F00EAC5CA /* WeatherViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		04019D11292B595D00EAC5CA /* WeatherResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherResponse.swift; sourceTree = "<group>"; };
 		04019D13292B596A00EAC5CA /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
 		04019D16292B59CD00EAC5CA /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		04019D19292B5A2F00EAC5CA /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 		04019CF9292B567500EAC5CA /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				04019D19292B5A2F00EAC5CA /* WeatherViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -247,6 +250,7 @@
 				04019CE9292B561B00EAC5CA /* ViewController.swift in Sources */,
 				04019D10292B58DA00EAC5CA /* APIMethod.swift in Sources */,
 				04019D03292B575200EAC5CA /* Colors.swift in Sources */,
+				04019D1A292B5A2F00EAC5CA /* WeatherViewModel.swift in Sources */,
 				04019D12292B595D00EAC5CA /* WeatherResponse.swift in Sources */,
 				04019D0A292B58B700EAC5CA /* BaseURL.swift in Sources */,
 				04019D01292B571D00EAC5CA /* WeatherViewController.swift in Sources */,
