@@ -21,6 +21,7 @@
 		04019D10292B58DA00EAC5CA /* APIMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04019D0F292B58DA00EAC5CA /* APIMethod.swift */; };
 		04019D12292B595D00EAC5CA /* WeatherResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04019D11292B595D00EAC5CA /* WeatherResponse.swift */; };
 		04019D14292B596A00EAC5CA /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04019D13292B596A00EAC5CA /* Coordinate.swift */; };
+		04019D17292B59CD00EAC5CA /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04019D16292B59CD00EAC5CA /* LocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		04019D0F292B58DA00EAC5CA /* APIMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIMethod.swift; sourceTree = "<group>"; };
 		04019D11292B595D00EAC5CA /* WeatherResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherResponse.swift; sourceTree = "<group>"; };
 		04019D13292B596A00EAC5CA /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
+		04019D16292B59CD00EAC5CA /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 		04019CE3292B561B00EAC5CA /* iOS-Design-Patterns */ = {
 			isa = PBXGroup;
 			children = (
+				04019D15292B59B800EAC5CA /* Manager */,
 				04019D06292B581C00EAC5CA /* Extensions */,
 				04019CFE292B56BB00EAC5CA /* Application */,
 				04019CFD292B56AE00EAC5CA /* Resources */,
@@ -163,6 +166,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		04019D15292B59B800EAC5CA /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				04019D16292B59CD00EAC5CA /* LocationManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -245,6 +256,7 @@
 				04019D0E292B58CB00EAC5CA /* API.swift in Sources */,
 				04019CE7292B561B00EAC5CA /* SceneDelegate.swift in Sources */,
 				04019D14292B596A00EAC5CA /* Coordinate.swift in Sources */,
+				04019D17292B59CD00EAC5CA /* LocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
